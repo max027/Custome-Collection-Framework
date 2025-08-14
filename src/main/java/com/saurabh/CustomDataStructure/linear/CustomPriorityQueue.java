@@ -1,5 +1,5 @@
 package com.saurabh.CustomDataStructure.linear;
 
-public class CustomQueue {
+public class CustomPriorityQueue {
 
 }

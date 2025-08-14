@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 public class CustomLinkedList<E> implements list<E> {
     Node<E> head;
     Node<E> tail;
-    int size=0;
+    private int size=0;
 
     public CustomLinkedList(){
 
