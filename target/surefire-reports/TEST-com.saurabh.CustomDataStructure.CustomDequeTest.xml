@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.027" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.079" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,17 +58,13 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="testAddRemoveElements" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.003"/>
-  <testcase name="testConstructorWithValidCapacity" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.002"/>
-  <testcase name="testSet" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.002"/>
-  <testcase name="testConstructorWithZeroCapacity" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.001"/>
-  <testcase name="testIndex" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.001"/>
-  <testcase name="testNull" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.004"/>
-  <testcase name="testRemoveByIndex" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.002"/>
-  <testcase name="testConstructorWithNegativeCapacity" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.002"/>
-  <testcase name="testArrayGrowth" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.001"/>
-  <testcase name="testDefault" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.001"/>
-  <testcase name="testInvalidIndex" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.002"/>
-  <testcase name="testInsertMiddle" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.001"/>
-  <testcase name="testRemove" classname="com.saurabh.CustomDataStructure.Dynamic_ArrayTest" time="0.001"/>
+  <testcase name="testEmptyDeque" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.046"/>
+  <testcase name="testPeek" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testSize" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testPollFirstandLast" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testOfferandPoll" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testParameParametrizedConstructor" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testOfferFirstandLast" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testNullHandling" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testDefaultConstructor" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
 </testsuite>

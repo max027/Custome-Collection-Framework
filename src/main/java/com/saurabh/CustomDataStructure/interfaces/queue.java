@@ -6,6 +6,7 @@ public interface queue<E> {
     // Add specific element in queue
     boolean offer(E element);
 
+    int size();
     // Removes head of queue.
     E poll();
 

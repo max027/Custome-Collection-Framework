@@ -178,12 +178,15 @@ public class CustomeDeque<E> implements deque<E> {
     }
 
     // queue methods
+
+    // Add given element at the back
     @Override
     public boolean offer(E element) {
         offerLast(element);
         return true;
     }
 
+    //Remove Element from front
     @Override
     public E poll() {
         return pollFirst();
@@ -196,6 +199,13 @@ public class CustomeDeque<E> implements deque<E> {
 
     public boolean isEmpty(){
         return head==tail;
+    }
+    public int size(){
+        int i=tail-head;
+        if (i<0){
+            i+=elements.length;
+        }
+        return i;
     }
 
     public String toString(){
