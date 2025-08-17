@@ -9,15 +9,14 @@ public class CustomeDeque<E> implements deque<E> {
     //Array which holds data in deque. Circular buffer
     private Object[] elements;
 
-    //Default capacity of circular buffre
     static final int DEFAULT_CAPACITY=16;
+
     //Index of first element in deque
     private int head;
 
     //Index of last element in deque
     private int tail;
 
-    //Max array size to allocate
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     //Handel dynamic resizing of circular buffer
