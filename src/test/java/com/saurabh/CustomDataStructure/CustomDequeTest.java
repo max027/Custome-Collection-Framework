@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
-import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.NoSuchElementException;
 public class CustomDequeTest {
@@ -65,102 +65,167 @@ public class CustomDequeTest {
         assertEquals(3,deque.size());
     }
 
-    @Test
-    void testPeek(){
-        string_deque.offer("First");
-        string_deque.offer("Second");
-        string_deque.offer("Third");
+    @Nested
+    class TestPeek {
+        @BeforeEach
+        void initialize() {
+            deque.offer(12);
+            deque.offer(22);
+            deque.offer(34);
+            deque.offer(35);
 
-        assertEquals(3,string_deque.size());
-        assertEquals("First",string_deque.peekFirst());
-        assertEquals("Third",string_deque.peekLast());
+        }
 
-        string_deque.offerFirst("Fourth");
-        assertEquals(4,string_deque.size());
-        assertEquals("Fourth",string_deque.peekFirst());
+        @Test
+        void testPeekFirst(){
+            assertEquals(12,(int)deque.peekFirst());
+            deque.pollFirst();
+            assertEquals(22,(int)deque.peekFirst());
 
+            CustomeDeque<Integer>ar=new CustomeDeque<>();
+            assertThrows(NoSuchElementException.class,()->ar.peekFirst());
+        }
+        @Test
+        void testPeekLast(){
+            assertEquals(35,(int)deque.peekLast());
+            deque.pollLast();
+            assertEquals(34,(int)deque.peekLast());
+            CustomeDeque<Integer>ar=new CustomeDeque<>();
+            assertThrows(NoSuchElementException.class,()->ar.peekLast());
+        }
 
-        string_deque.offerLast("Five");
-        assertEquals(5,string_deque.size());
-        assertEquals("Five",string_deque.peekLast());
+        @Test
+        void testPeek(){
+            assertEquals(12,(int)deque.peekFirst());
+            deque.pollFirst();
+            assertEquals(22,(int)deque.peekFirst());
 
-        string_deque.pollFirst();
-        assertEquals(4,string_deque.size());
-        assertEquals("First",string_deque.peekFirst());
+            CustomeDeque<Integer>ar=new CustomeDeque<>();
+            assertThrows(NoSuchElementException.class,()->ar.peek());
+        }
     }
 
+    @Nested
+    class TestInsertion{
 
-    @Test
-    void testOfferFirstandLast(){
-        string_deque.offerFirst("A");
-        assertEquals(1,string_deque.size());
-        assertEquals("A",string_deque.peekFirst());
+       @Test
+       void testOfferFirst(){
+           assertTrue(string_deque.offerFirst("A"));
+           assertEquals(1,string_deque.size());
+           assertEquals("A",string_deque.peekFirst());
 
-        string_deque.offerLast("B");
+           string_deque.offerFirst("B");
+           assertEquals(2,string_deque.size());
+           assertEquals("B",string_deque.peekFirst());
 
-        assertEquals(2,string_deque.size());
-        assertEquals("B",string_deque.peekLast());
+           string_deque.offerFirst("C");
+           assertEquals(3,string_deque.size());
+           assertEquals("C",string_deque.peekFirst());
 
-        string_deque.offerFirst("C");
-        assertEquals(3,string_deque.size());
-        assertEquals("C",string_deque.peekFirst());
+           assertThrows(NullPointerException.class,()->string_deque.offerLast(null));
 
+       }
 
-        string_deque.offerLast("D");
+       @Test
+        void testOfferLast(){
+           assertTrue(string_deque.offerLast("C"));
+           assertEquals(1,string_deque.size());
+           assertEquals("C",string_deque.peekLast());
 
-        assertEquals(4,string_deque.size());
-        assertEquals("D",string_deque.peekLast());
+           string_deque.offerLast("B");
+           assertEquals(2,string_deque.size());
+           assertEquals("B",string_deque.peekLast());
+
+           assertThrows(NullPointerException.class,()->string_deque.offerLast(null));
+       }
+
+       @Test
+        void testOffer(){
+           assertTrue(deque.offer(5));
+           assertEquals(1,deque.size());
+           assertEquals(5,(int)deque.peekLast());
+
+           deque.offerLast(4);
+           assertEquals(2,deque.size());
+           assertEquals(4,(int)deque.peekLast());
+
+           assertThrows(NullPointerException.class,()->deque.offer(null));
+       }
     }
 
-    @Test
-    void testPollFirstandLast(){
-        deque.offer(12);
-        deque.offer(22);
-        deque.offer(34);
-        deque.offer(35);
+    @Nested
+    class TestDeletion{
+       @BeforeEach
+       void initialize(){
+           deque.offer(12);
+           deque.offer(22);
+           deque.offer(34);
+           deque.offer(35);
 
-        assertEquals(4,deque.size());
-        assertEquals(12,(int)deque.peekFirst());
-        assertEquals(35,(int)deque.peekLast());
 
-        deque.pollFirst();
-        deque.pollLast();
+           string_deque.offer("First");
+           string_deque.offer("Second");
+           string_deque.offer("Third");
+           string_deque.offer("Fourth");
+           string_deque.offer("Fifth");
+           string_deque.offer("Sixth");
+       }
+       @Test
+        void testPollLast(){
+           assertEquals(4,deque.size());
+           assertEquals(12,(int)deque.peekFirst());
+           assertEquals(35,(int)deque.peekLast());
 
-        assertEquals(2,deque.size());
-        assertEquals(22,(int)deque.peekFirst());
-        assertEquals(34,(int)deque.peekLast());
+           assertEquals(35,(int)deque.pollLast());
+           assertEquals(3,deque.size());
 
-        deque.pollFirst();
-        deque.pollLast();
 
-        assertEquals(0,deque.size());
+           assertEquals(34,(int)deque.pollLast());
+           assertEquals(2,deque.size());
+           assertFalse(deque.contains(34));
 
-    }
-    @Test
-    void testOfferandPoll(){
-        string_deque.offer("First");
-        string_deque.offer("Second");
-        string_deque.offer("Third");
-        string_deque.offer("Fourth");
-        string_deque.offer("Fifth");
-        string_deque.offer("Sixth");
 
-        assertEquals(6,string_deque.size());
-        assertEquals("First",string_deque.peekFirst());
-        assertEquals("Sixth",string_deque.peekLast());
 
-        string_deque.poll();
-        assertEquals(5,string_deque.size());
-        assertEquals("Second",string_deque.peekFirst());
+       }
 
-        string_deque.offer("First");
-        assertEquals(6,string_deque.size());
-        assertEquals("First",string_deque.peekLast());
+       @Test
+        void testPollFirst(){
+           assertEquals(6,string_deque.size());
+           assertEquals("First",string_deque.peekFirst());
+           assertEquals("Sixth",string_deque.peekLast());
 
-        string_deque.poll();
-        string_deque.poll();
-        assertEquals(4,string_deque.size());
-        assertEquals("Fourth",string_deque.peekFirst());
+           assertEquals("First",string_deque.pollFirst());
+           assertEquals("Second",string_deque.peekFirst());
+           assertEquals(5,string_deque.size());
+
+           assertEquals("Second",string_deque.pollFirst());
+           assertEquals("Third",string_deque.peekFirst());
+           assertEquals(4,string_deque.size());
+       }
+
+       @Test
+        void testPoll(){
+           assertEquals(6,string_deque.size());
+           assertEquals("First",string_deque.poll());
+           assertFalse(string_deque.contains("First"));
+           assertEquals(5,string_deque.size());
+
+
+           assertEquals("Second",string_deque.peekFirst());
+           assertEquals("Second",string_deque.poll());
+           assertFalse(string_deque.contains("Second"));
+           assertEquals(4,string_deque.size());
+       }
+
+       @Test
+        void testPollEmpty(){
+           CustomeDeque<Integer>ar=new CustomeDeque<>();
+           assertNull(ar.poll());
+           assertThrows(NoSuchElementException.class,()->ar.peek());
+
+           assertNull(ar.pollLast());
+           assertNull(ar.pollFirst());
+       }
     }
 
     @Test
@@ -177,13 +242,6 @@ public class CustomDequeTest {
         assertThrows(NoSuchElementException.class, deque1::peekFirst);
         assertThrows(NoSuchElementException.class, deque1::peekLast);
     }
-    @Test
-    void testNullHandling(){
-        assertThrows(NullPointerException.class, ()->deque.offer(null));
-        assertThrows(NullPointerException.class, ()->deque.offerFirst(null));
-        assertThrows(NullPointerException.class, ()->deque.offerLast(null));
-    }
-
 
 }
 

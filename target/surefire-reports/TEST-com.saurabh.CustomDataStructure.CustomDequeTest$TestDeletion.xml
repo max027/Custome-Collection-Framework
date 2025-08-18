@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.113" tests="0" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.saurabh.CustomDataStructure.CustomDequeTest$TestDeletion" time="0.009" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,4 +58,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
+  <testcase name="testEmptyDeque" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.049"/>
+  <testcase name="testSize" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testParameParametrizedConstructor" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.001"/>
+  <testcase name="testDefaultConstructor" classname="com.saurabh.CustomDataStructure.CustomDequeTest" time="0.0"/>
+  <testcase name="testPoll" classname="com.saurabh.CustomDataStructure.CustomDequeTest$TestDeletion" time="0.002"/>
+  <testcase name="testPollEmpty" classname="com.saurabh.CustomDataStructure.CustomDequeTest$TestDeletion" time="0.002"/>
+  <testcase name="testPollFirst" classname="com.saurabh.CustomDataStructure.CustomDequeTest$TestDeletion" time="0.001"/>
+  <testcase name="testPollLast" classname="com.saurabh.CustomDataStructure.CustomDequeTest$TestDeletion" time="0.002"/>
 </testsuite>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.023" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.026" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
-    <property name="sun.java.command" value="C:\Users\saura\AppData\Local\Temp\surefire7063903136164162637\surefirebooter-20250814131223329_3.jar C:\Users\saura\AppData\Local\Temp\surefire7063903136164162637 2025-08-14T13-12-23_199-jvmRun1 surefire-20250814131223329_1tmp surefire_0-20250814131223329_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\saura\AppData\Local\Temp\surefire9658246504888347294\surefirebooter-20250818201215054_3.jar C:\Users\saura\AppData\Local\Temp\surefire9658246504888347294 2025-08-18T20-12-14_924-jvmRun1 surefire-20250818201215054_1tmp surefire_0-20250818201215054_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\saura\Coding\Java\CustomDataStructure\target\test-classes;C:\Users\saura\Coding\Java\CustomDataStructure\target\classes;C:\Users\saura\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\saura\.m2\repository\org\junit\jupiter\junit-jupiter\6.0.0-M2\junit-jupiter-6.0.0-M2.jar;C:\Users\saura\.m2\repository\org\junit\jupiter\junit-jupiter-api\6.0.0-M2\junit-jupiter-api-6.0.0-M2.jar;C:\Users\saura\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\saura\.m2\repository\org\junit\platform\junit-platform-commons\6.0.0-M2\junit-platform-commons-6.0.0-M2.jar;C:\Users\saura\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\saura\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\saura\.m2\repository\org\junit\jupiter\junit-jupiter-params\6.0.0-M2\junit-jupiter-params-6.0.0-M2.jar;C:\Users\saura\.m2\repository\org\junit\jupiter\junit-jupiter-engine\6.0.0-M2\junit-jupiter-engine-6.0.0-M2.jar;C:\Users\saura\.m2\repository\org\junit\platform\junit-platform-engine\6.0.0-M2\junit-platform-engine-6.0.0-M2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\saura\AppData\Local\Temp\surefire7063903136164162637\surefirebooter-20250814131223329_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\saura\AppData\Local\Temp\surefire9658246504888347294\surefirebooter-20250818201215054_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="24.0.1+9-30"/>
@@ -58,14 +58,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="testGetIndex" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.004"/>
-  <testcase name="testSet" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.001"/>
+  <testcase name="testGetIndex" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
+  <testcase name="testSet" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
   <testcase name="testRemoveIndex" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
   <testcase name="testAddIndex" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
   <testcase name="testAddFirstLast" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.001"/>
-  <testcase name="testGetFirstLast" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.001"/>
-  <testcase name="testInvalidIndex" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.001"/>
+  <testcase name="testGetFirstLast" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
+  <testcase name="testInvalidIndex" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
   <testcase name="testIndexOf" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.001"/>
-  <testcase name="testConstructor" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
-  <testcase name="testRemoveFirstLast" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.002"/>
+  <testcase name="testConstructor" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.001"/>
+  <testcase name="testRemoveFirstLast" classname="com.saurabh.CustomDataStructure.CustomeLinkedListTest" time="0.003"/>
 </testsuite>

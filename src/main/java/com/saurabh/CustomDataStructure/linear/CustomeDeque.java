@@ -199,6 +199,30 @@ public class CustomeDeque<E> implements deque<E> {
     public boolean isEmpty(){
         return head==tail;
     }
+
+    @Override
+    public boolean contains(Object o) {
+        if (o!=null){
+            final Object[]es=elements;
+            int i=head;
+            int j=tail;
+            int boundry=(i<=j)?j:es.length;
+            for (;i<boundry;i++){
+               if (o.equals(es[i])){
+                   return true;
+               }
+            }
+            if (i>j){
+                for (i=0;i<j;i++){
+                    if (o.equals(es[i])){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     public int size(){
         int i=tail-head;
         if (i<0){

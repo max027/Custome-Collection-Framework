@@ -1,9 +1,7 @@
 package com.saurabh.CustomDataStructure.linear;
 
 import com.saurabh.CustomDataStructure.interfaces.queue;
-import jdk.internal.util.ArraysSupport;
 
-import java.lang.annotation.ElementType;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -11,12 +9,14 @@ public class CustomPriorityQueue<E> implements queue<E> {
 
     private int size;
 
+    private int MAX_ARRAY_SIZE=Integer.MAX_VALUE-8;
+
     private static final int DEFAULT_CAPACITY=11;
 
     // If null uses natural ordering.
      private final Comparator <? super E> comparator;
 
-    //Array where elements in the queue are stored.represented by binary tree
+    //Array where elements in the queue are stored.Default min heap
     private Object[] ElementData;
 
     //create priority queue with default capacity and order element with natural ordering
@@ -43,19 +43,33 @@ public class CustomPriorityQueue<E> implements queue<E> {
         this.ElementData=new Object[capacity];
     }
 
-   //ensure that Object[0] exist
-    private Object[] ensureNonEmpty(Object[] obj){
-       return (obj.length>0) ? obj:new Object[1];
-    }
-
-
     private void grow(int needed_capacity){
         int oldCap=ElementData.length;
         int minCap=oldCap+needed_capacity;
         int preferedCap=(oldCap<64)?oldCap+2:oldCap>>1;
 
-        int newCap= ArraysSupport.newLength(oldCap,minCap,preferedCap);
+        int newCap= newCapacity(oldCap,minCap,preferedCap);
         ElementData= Arrays.copyOf(ElementData,newCap);
+    }
+
+    private int newCapacity(int oldCap,int minCap,int preferedCap){
+      int pref=oldCap+ Math.max(minCap,preferedCap);
+     if (pref>0 && pref<=MAX_ARRAY_SIZE){
+         return pref;
+     }else{
+       return hugeLength(oldCap,minCap);
+     }
+    }
+
+    private int hugeLength(int oldCap,int minCap){
+       int minLen=oldCap+minCap;
+       if (minLen<0){
+           throw new OutOfMemoryError();
+       }else if (minLen<=MAX_ARRAY_SIZE){
+           return MAX_ARRAY_SIZE;
+       }else {
+           return minLen;
+       }
     }
 
     @Override
@@ -212,8 +226,8 @@ public class CustomPriorityQueue<E> implements queue<E> {
     // remove ith element from queue
     private E removeAt(int i){
         final Object[] ar=ElementData;
-        int n=size--;
-        if (i==n){
+        int n=--size;
+        if (n==i){
             ar[i]=null;
         }else{
             E moved=(E)ar[n];
@@ -267,6 +281,10 @@ public class CustomPriorityQueue<E> implements queue<E> {
     @Override
     public boolean isEmpty() {
         return size==0;
+    }
+
+    public boolean contains(Object e){
+        return indexOf(e)>=0;
     }
 
 }

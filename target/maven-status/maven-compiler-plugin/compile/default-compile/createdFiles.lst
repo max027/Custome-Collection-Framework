@@ -1,5 +1,4 @@
 com\saurabh\CustomDataStructure\interfaces\deque.class
-com\saurabh\CustomDataStructure\Maps\CustomeTreeMaps.class
 com\saurabh\CustomDataStructure\Utils\Node.class
 com\saurabh\CustomDataStructure\interfaces\list.class
 com\saurabh\CustomDataStructure\linear\CustomeDeque.class

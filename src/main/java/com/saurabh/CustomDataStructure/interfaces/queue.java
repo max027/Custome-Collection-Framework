@@ -17,4 +17,6 @@ public interface queue<E> {
 
     //Returns true if queue is empty.
     public boolean isEmpty();
+
+    public boolean contains(Object o);
 }
