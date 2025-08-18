@@ -184,7 +184,9 @@ public class CustomPriorityQueue<E> implements queue<E> {
                shiftDownCompare(i,(E) ar[i],ar,n);
            }
        }else {
-           shiftDownComparator(i,(E) ar[i],ar,comp,n);
+           for (; i >=0 ; i--) {
+               shiftDownComparator(i,(E) ar[i],ar,comp,n);
+           }
        }
 
     }
@@ -194,9 +196,67 @@ public class CustomPriorityQueue<E> implements queue<E> {
         return size;
     }
 
+    private int indexOf(Object obj){
+        if (obj!=null){
+           final Object[] ar=ElementData;
+           int n=size;
+           for (int i=0;i<n;i++){
+               if (obj.equals(ar[i])){
+                   return i;
+               }
+           }
+        }
+        return -1;
+    }
+
+    // remove ith element from queue
+    private E removeAt(int i){
+        final Object[] ar=ElementData;
+        int n=size--;
+        if (i==n){
+            ar[i]=null;
+        }else{
+            E moved=(E)ar[n];
+            ar[n]=null;
+            shiftDown(i,moved);
+            if (ar[i]==moved){
+                shiftUp(i,moved);
+                if (ar[i]!=moved){
+                    return moved;
+                }
+            }
+
+        }
+        return null;
+    }
+
+    public boolean remove(Object obj){
+       int i=indexOf(obj);
+       if (i==-1){
+           return false;
+       }else{
+           removeAt(i);
+           return true;
+       }
+    }
     @Override
     public E poll() {
-        return null;
+        final Object[] ar=ElementData;
+       final E result=(E)ar[0];
+       if (result!=null){
+           int n=--size;
+           E x=(E) ar[n];
+           ar[n]=null;
+           if (n>0){
+               final Comparator<? super E>comp=comparator;
+               if (comp==null){
+                   shiftDownCompare(0,x,ar,n);
+               }else{
+                   shiftDownComparator(0,x,ar,comp,n);
+               }
+           }
+       }
+        return result;
     }
 
     @Override
@@ -206,7 +266,7 @@ public class CustomPriorityQueue<E> implements queue<E> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size==0;
     }
 
 }
