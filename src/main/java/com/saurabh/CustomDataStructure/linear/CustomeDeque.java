@@ -20,17 +20,17 @@ public class CustomeDeque<E> implements deque<E> {
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     //Handel dynamic resizing of circular buffer
-    private void grow(int needed_capacity){
+    private void grow(int givenCap){
         final int oldCap=elements.length;
 
         //for small double else grow by 50%
-        int jump=(oldCap<64)?(oldCap+2):(oldCap>>1);
+        int preferedCap=(oldCap<64)?(oldCap+2):(oldCap>>1);
 
-        int newCap=oldCap+jump;
+        int newCap=oldCap+preferedCap;
 
         //check for overflow conditions
-        if (jump<needed_capacity||newCap-MAX_ARRAY_SIZE>0){
-            newCap=newCapacity(needed_capacity,jump);
+        if (preferedCap<givenCap||newCap-MAX_ARRAY_SIZE>0){
+            newCap=newCapacity(givenCap,preferedCap);
         }
 
         final Object[] es=elements=Arrays.copyOf(elements,newCap);
@@ -45,9 +45,9 @@ public class CustomeDeque<E> implements deque<E> {
         }
     }
 
-    private int newCapacity(int capacity,int jump){
+    private int newCapacity(int givenCap,int preferedCap){
         final int oldCap= elements.length,minCap;
-        minCap = oldCap + capacity;
+        minCap = oldCap + givenCap;
         if (minCap-MAX_ARRAY_SIZE>0){
             //check for overflow
             if (minCap<0){
@@ -55,10 +55,10 @@ public class CustomeDeque<E> implements deque<E> {
             }
             return Integer.MAX_VALUE;
         }
-        if (capacity>jump){
+        if (givenCap>preferedCap){
             return minCap;
         }
-        return (oldCap+jump-MAX_ARRAY_SIZE)<0?oldCap+jump:MAX_ARRAY_SIZE;
+        return (oldCap+preferedCap-MAX_ARRAY_SIZE)<0?oldCap+preferedCap:MAX_ARRAY_SIZE;
     }
 
     public CustomeDeque(){
