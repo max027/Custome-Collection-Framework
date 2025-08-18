@@ -1,6 +1,6 @@
 package com.saurabh.CustomDataStructure;
 
-import com.saurabh.CustomDataStructure.linear.CustomPriorityQueue;
+import com.saurabh.CustomDataStructure.Tree.CustomPriorityQueue;
 import com.saurabh.CustomDataStructure.linear.CustomeDeque;
 
 import java.util.ArrayDeque;

@@ -1,7 +1,6 @@
 package com.saurabh.CustomDataStructure;
 
-import com.saurabh.CustomDataStructure.linear.CustomPriorityQueue;
-import org.junit.jupiter.api.Assertions;
+import com.saurabh.CustomDataStructure.Tree.CustomPriorityQueue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
