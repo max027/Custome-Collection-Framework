@@ -76,7 +76,7 @@ mvn test
 import com.saurabh.CustomDataStructure.linear.DynamicArrays;
 
 // Create a dynamic array
-DynamicArray<String> array = new DynamicArray<>();
+DynamicArrays<String> array = new DynamicArrays<>();
 
 // Add elements
 array.add("Hello");
@@ -96,7 +96,7 @@ System.out.println(array); // [Hello]
 
 ### Binary Search Tree
 ```java
-import com.saurabh.CustomDataStructure.Tree.BST;
+import com.saurabh.CustomDataStructure.Tree.BinarySearchTree;
 
 // Create a BST
 BinarySearchTree<Integer> bst = new BinarySearchTree<>();
@@ -149,15 +149,17 @@ Integer removed = map.remove("banana"); // 3
 #### List<E> Interface
 ```java
 public interface List<E> {
-    void add(E element);
-    void add(int index, E element);
-    E get(int index);
-    E set(int index, E element);
-    E remove(int index);
-    boolean remove(E element);
     int size();
     boolean isEmpty();
+    boolean add(E element);
+    E remove(int  index);
+    E remove();
+    E get(int index);
+    E set(int index,E element);
+    void add(int index,E element);
+    int indexOf(E element);
     boolean contains(E element);
+    boolean remove(Object o);
     void clear();
 }
 ```
@@ -177,6 +179,17 @@ public interface Tree<E extends Comparable<E>> {
 }
 ```
 
+#### queue<E> Interface
+```java
+public interface queue<E> {
+    boolean offer(E element);
+    int size();
+    E poll();
+    E peek();
+    public boolean isEmpty();
+    public boolean contains(Object o);
+}
+```
 For complete API documentation, run:
 ```bash
 mvn javadoc:javadoc
@@ -189,9 +202,6 @@ The project includes comprehensive unit tests using JUnit 5:
 ```bash
 # Run all tests
 mvn test
-
-# Run tests with coverage
-mvn test jacoco:report
 
 # Run specific test class
 mvn test -Dtest=DynamicArrayTest
@@ -250,7 +260,7 @@ HashMap.put                        avgt   10   89.1 ±  4.1   ns/op
 Run performance tests to compare with Java's built-in collections:
 
 ```bash
-mvn exec:java -Dexec.mainClass="com.yourname.datastructures.benchmarks.PerformanceBenchmark"
+mvn exec:java -Dexec.mainClass="com.saurabh.CustomDataStructure.benchmarks.PerformanceBenchmark"
 ```
 
 Sample output:
