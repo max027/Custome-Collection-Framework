@@ -73,7 +73,7 @@ mvn test
 
 ### Dynamic Array
 ```java
-import com.yourname.datastructures.linear.DynamicArray;
+import com.saurabh.CustomDataStructure.linear.DynamicArrays;
 
 // Create a dynamic array
 DynamicArray<String> array = new DynamicArray<>();
@@ -96,7 +96,7 @@ System.out.println(array); // [Hello]
 
 ### Binary Search Tree
 ```java
-import com.yourname.datastructures.trees.BinarySearchTree;
+import com.saurabh.CustomDataStructure.Tree.BST;
 
 // Create a BST
 BinarySearchTree<Integer> bst = new BinarySearchTree<>();
@@ -121,8 +121,7 @@ bst.postorderTraversal(); // 20, 40, 30, 70, 50
 
 ### Hash Map
 ```java
-import com.yourname.datastructures.hash.CustomHashMap;
-
+import com.saurabh.CustomDataStructure.Maps.CustomeHashMap;
 // Create a hash map
 CustomHashMap<String, Integer> map = new CustomHashMap<>();
 
