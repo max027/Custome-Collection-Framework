@@ -117,6 +117,10 @@ public class CustomLinkedList<E> implements list<E> {
         return items;
     }
 
+    /**
+     *
+     * @return number of elements in list
+     */
     @Override
     public int size() {
         return size;
@@ -128,21 +132,39 @@ public class CustomLinkedList<E> implements list<E> {
     }
 
 
+    /**
+     * Insert specified element at beginning of list
+     * @param element
+     */
     public void addFirst(E element){
         linkFirst(element);
     }
 
+    /**
+     * Insert specified element at end of list
+     * @param element
+     */
     public void addLast(E element){
         linkLast(element);
     }
 
-    // Append specific element at end of list
+
+    /**
+     * Append specific element at end of list
+     * @param element
+     * @return true
+     */
     @Override
     public boolean add(E element) {
         linkLast(element);
         return true;
     }
 
+    /**
+     * Removes and returns first element in list
+     * @return first element
+     * @throws NoSuchElementException
+     */
     public E removeFirst(){
         final Node<E> f=head;
         if (f==null){
@@ -151,6 +173,11 @@ public class CustomLinkedList<E> implements list<E> {
         return unlinkFirst(f);
     }
 
+    /**
+     * Removes and returns last element in list
+     * @return last element
+     * @throws NoSuchElementException
+     */
     public E removeLast(){
         final Node<E>l=tail;
         if (l==null){
@@ -159,7 +186,11 @@ public class CustomLinkedList<E> implements list<E> {
         return unlinkLast(l);
     }
 
-    //return first element from list
+    /**
+     * Returns first element in list
+     * @return first element
+     * @throws NoSuchElementException
+     */
     public E getFirst(){
        final Node<E> f=head;
        if (f==null){
@@ -167,8 +198,11 @@ public class CustomLinkedList<E> implements list<E> {
        }
        return f.Data;
     }
-
-    // return last element from list
+    /**
+     * Returns last element in list
+     * @return last element
+     * @throws NoSuchElementException
+     */
     public E getLast(){
         final Node<E> l=tail;
         if (l==null){
@@ -177,14 +211,23 @@ public class CustomLinkedList<E> implements list<E> {
         return l.Data;
     }
 
-    // check given index
+    /**
+     * Check if given index is valid
+     * @param index
+     * @throws IndexOutOfBoundsException
+     */
     private void checkValidIndex(int index){
         if (index<0 || index>size){
             throw new IndexOutOfBoundsException("Index:"+index+" size:"+size);
         }
     }
 
-    //returns element at specified position
+
+    /**
+     * Returns (Non-null) element at specified position
+     * @param index
+     * @return element at specified position
+     */
     Node<E> node(int index){
         if (index<(size>>1)){
             Node<E>x=head;
@@ -201,12 +244,26 @@ public class CustomLinkedList<E> implements list<E> {
         }
     }
 
+    /**
+     * Returns element at specified position int the list
+     * @param index
+     * @return element at specified position
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public E get(int index) {
         checkValidIndex(index);
         return node(index).Data;
     }
 
+
+    /**
+     * Replaces element at specified index with specified element
+     * @param index  index of element to replace
+     * @param element  element to replace with
+     * @return previous element
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public E set(int index, E element) {
         checkValidIndex(index);
@@ -216,6 +273,12 @@ public class CustomLinkedList<E> implements list<E> {
         return OldVal;
     }
 
+    /**
+     * Insert specified element in the specified index
+     * @param index index at which  element to be inserted
+     * @param element element that is to be inserted
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public void add(int index, E element) {
         checkValidIndex(index);
@@ -227,14 +290,24 @@ public class CustomLinkedList<E> implements list<E> {
 
 
     }
-    // Remove fist element from list
+    /**
+     * Removes element from specified index
+     * @param index index at which element is to be removed
+     * @return removed element
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public E remove(int index) {
         checkValidIndex(index);
         return unlink(node(index));
     }
 
-    // Return the index of first occurence in given list else return -1
+
+    /**
+     * Returns the index of first occurence of given element in list
+     * @param o
+     * @return element at specified index or -1
+     */
     @Override
     public int indexOf(Object o) {
         int index=0;
@@ -257,10 +330,21 @@ public class CustomLinkedList<E> implements list<E> {
         return -1;
     }
 
+    /**
+     * Check if specified element present in list
+     * @param o
+     * @return true if present else false
+     */
     @Override
     public boolean contains(Object o) {
         return indexOf(o)>=0;
     }
+
+    /**
+     * Removes specified element from list
+     * @param o element to be removed
+     * @return true if removed else false
+     */
 
     @Override
     public boolean remove(Object o) {
@@ -283,13 +367,18 @@ public class CustomLinkedList<E> implements list<E> {
     }
 
 
-    //remove and return first element in list.
+    /**
+     * Removes First element in list
+     * @return removed element
+     */
     @Override
     public E remove() {
         return removeFirst();
     }
 
-    //Remove all element from the list
+    /**
+     * Clears entire list for garbage collection
+     */
     @Override
     public void clear() {
         Node<E>x=head;

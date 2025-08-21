@@ -1,4 +1,4 @@
-package com.saurabh.CustomDataStructure.Tree;
+package com.saurabh.CustomDataStructure.linear;
 
 import com.saurabh.CustomDataStructure.interfaces.queue;
 

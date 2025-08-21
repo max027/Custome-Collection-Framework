@@ -1,4 +1,3 @@
-# Custome Collection Framework
 # Custom Data Structures Implementation in Java
 
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
@@ -299,6 +298,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - Inspired by classic algorithms and data structures textbooks
-- Built for educational purposes and technical interview preparation
-- Special thanks to the Java community for best practices guidance
+- Built for educational purposes 
 ---

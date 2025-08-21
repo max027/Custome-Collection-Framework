@@ -5,8 +5,17 @@ import com.saurabh.CustomDataStructure.interfaces.deque;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
+/**
+ * Deque
+ * Time Complexities
+ * offerFirst / offerLast - O(1)
+ * pollFirst / pollLast - O(1)
+ * peekFist / peekLast - O(1)
+ */
 public class CustomeDeque<E> implements deque<E> {
-    //Array which holds data in deque. Circular buffer
+    /**
+     * Array which holds data in deque
+     */
     private Object[] elements;
 
     static final int DEFAULT_CAPACITY=16;

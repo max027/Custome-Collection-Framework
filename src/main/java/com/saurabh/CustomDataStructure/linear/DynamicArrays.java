@@ -16,13 +16,19 @@ import java.util.Arrays;
  * Grow - O(n)
  */
 public class DynamicArrays<E> implements list<E> {
-    // Default capacity of array in not provided
+    /**
+     * Default capacity if not provided
+     */
     private static final int DEFAULT_CAPACITY=10;
 
-    // Main array which will hold data
+    /**
+     * Array which hold data
+     */
     private Object[] ElementData;
 
-    // Number of element currently in array
+    /**
+     * Number of element currently in array
+     */
     private int size;
 
     public DynamicArrays(int initialCapacity){
@@ -45,19 +51,28 @@ public class DynamicArrays<E> implements list<E> {
        return ElementData.length;
     }
 
+    /**
+     * Returns number of element present in array
+     * @return number of element in array
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Return if array is empty
+     * @return true if empty else false
+     */
     @Override
     public boolean isEmpty() {
         return size==0;
     }
 
     /**
-     * Increses the capacity of arrays if necessary
-     * @param minCapacity
+     * Increase the capacity of array to ensure that array can hold atleast
+     * the number of element specified.
+     * @param minCapacity desired minimum capacity
      */
     private void ensureCapacity(int minCapacity){
         if (minCapacity>ElementData.length){
@@ -65,6 +80,11 @@ public class DynamicArrays<E> implements list<E> {
         }
     }
 
+    /**
+     * Increase the capacity if needed
+     * @param minCapacity desired minimum capacity
+     * @throws OutOfMemoryError
+     */
     private void grow(int minCapacity){
         int OldCapacity=ElementData.length;
         int NewCapacity=OldCapacity+(OldCapacity*2);
@@ -75,6 +95,11 @@ public class DynamicArrays<E> implements list<E> {
         ElementData= Arrays.copyOf(ElementData,NewCapacity);
     }
 
+    /**
+     * Append specified element at end of array
+     * @param element element to be inserted
+     * @return true if inserted else false
+     */
     @Override
     public boolean add(E element) {
         ensureCapacity(size+1);
@@ -82,6 +107,11 @@ public class DynamicArrays<E> implements list<E> {
         return true;
     }
 
+    /**
+     * Remove element from end of array
+     * @return removed element
+     * @throws IndexOutOfBoundsException
+     */
     public  E remove(){
         if (size==0){
             throw new IndexOutOfBoundsException("Cannot remove from empty array");
@@ -92,6 +122,12 @@ public class DynamicArrays<E> implements list<E> {
         return lastElement;
     }
 
+    /**
+     * Remove element at specified index
+     * @param index index at which element to be removed
+     * @return removed element
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public E remove(int index) {
         rangeCheck(index);
@@ -104,12 +140,25 @@ public class DynamicArrays<E> implements list<E> {
         return oldValue;
     }
 
+    /**
+     * Returns element at specified index
+     * @param index index at which element is to be retrieved
+     * @return element at specified index
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public E get(int index){
         rangeCheck(index);
         return (E)ElementData[index];
     }
 
+    /**
+     * Replace element at specified index with specified element
+     * @param index index at which element is to be replace
+     * @param element element to be replace with
+     * @return previous element
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public E set(int index, E element) {
         rangeCheck(index);
@@ -117,6 +166,13 @@ public class DynamicArrays<E> implements list<E> {
         ElementData[index]=element;
         return oldValue;
     }
+
+    /**
+     * Inserts specified element at specified index
+     * @param index index at which element is to be inserted
+     * @param element element to be inserted
+     * @throws IndexOutOfBoundsException
+     */
 
     @Override
     public void add(int index, E element) {
@@ -128,6 +184,11 @@ public class DynamicArrays<E> implements list<E> {
     }
 
 
+    /**
+     * Returns index of specified element
+     * @param element
+     * @return index of specified element or -1
+     */
     @Override
     public int indexOf(E element) {
         for (int i=0;i<ElementData.length;i++){
@@ -138,10 +199,20 @@ public class DynamicArrays<E> implements list<E> {
        return -1;
     }
 
+    /**
+     * Check if specified element is present in array
+     * @param element
+     * @return true if present else flase
+     */
     public boolean contains(E element){
         return indexOf(element)>=0;
     }
 
+    /**
+     * Removes specified element from array
+     * @param o element to be removed
+     * @return true if removed else false
+     */
     @Override
     public boolean remove(Object o) {
         if (o==null){
@@ -162,7 +233,10 @@ public class DynamicArrays<E> implements list<E> {
         return false;
     }
 
-    // Skips bound checking does not return element.
+    /**
+     * Skips bound checking does not return element
+     * @param index
+     */
     private void fastRemove(int index){
         int numMoved=size-index-1;
         if (numMoved>0){
@@ -172,6 +246,9 @@ public class DynamicArrays<E> implements list<E> {
     }
 
 
+    /**
+     * Clear array for garbage collection
+     */
     public void clear(){
         for (int i=0;i<ElementData.length;i++){
            ElementData[i]=null;
