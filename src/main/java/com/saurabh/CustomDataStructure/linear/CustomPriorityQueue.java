@@ -7,34 +7,56 @@ import java.util.Comparator;
 
 public class CustomPriorityQueue<E> implements queue<E> {
 
+    /**
+     * number of elements in priority queue
+     */
     private int size;
 
+    /**
+     * Safe max integer size
+     */
     private int MAX_ARRAY_SIZE=Integer.MAX_VALUE-8;
 
     private static final int DEFAULT_CAPACITY=11;
 
-    // If null uses natural ordering.
+    /**
+     *If null uses natural ordering.
+     */
      private final Comparator <? super E> comparator;
 
-    //Array where elements in the queue are stored.Default min heap
+    /**
+     * Array where elements in the queue are stored.Default min heap
+     */
     private Object[] ElementData;
 
-    //create priority queue with default capacity and order element with natural ordering
+    /**
+     *  create priority queue with default capacity and order element with natural ordering
+     */
     public CustomPriorityQueue(){
         this(DEFAULT_CAPACITY);
     }
 
-    //create priority queue with given capacity and order element with natural ordering
+    /**
+     * create priority queue with given capacity and order element with natural ordering
+     * @param capacity
+     */
     public CustomPriorityQueue(int capacity){
         this(capacity,null);
     }
 
-    //create priority queue with default capacity and order element with specified comparator.
+    /**
+     * create priority queue with default capacity and order element with specified comparator.
+     * @param comp
+     */
     public CustomPriorityQueue(Comparator<? super E>comp){
         this(DEFAULT_CAPACITY,comp);
     }
 
-    //create priority queue with given capacity and order element with specified comparator.
+    /**
+     * create priority queue with given capacity and order element with specified comparator.
+     * @param capacity
+     * @param comp
+     */
     public CustomPriorityQueue(int capacity,Comparator<? super E>comp){
         if (capacity<1){
             throw  new IllegalArgumentException();
@@ -43,6 +65,10 @@ public class CustomPriorityQueue<E> implements queue<E> {
         this.ElementData=new Object[capacity];
     }
 
+    /**
+     * Increase capacity of array
+     * @param needed_capacity desired min capacity
+     */
     private void grow(int needed_capacity){
         int oldCap=ElementData.length;
         int minCap=oldCap+needed_capacity;
@@ -72,6 +98,11 @@ public class CustomPriorityQueue<E> implements queue<E> {
        }
     }
 
+    /**
+     * Insert specified element in priority queue
+     * @return true if element inserted
+     * @throws NullPointerException
+     */
     @Override
     public boolean offer(E element) {
         if (element==null){
@@ -189,6 +220,9 @@ public class CustomPriorityQueue<E> implements queue<E> {
        ar[i]=element;
     }
 
+    /**
+     * Maintain heap in entire tree.Uses floyd algorithm
+     */
     private void heapify(){
        final Object[] ar=ElementData;
        final Comparator<? super E>comp=comparator;
@@ -205,6 +239,10 @@ public class CustomPriorityQueue<E> implements queue<E> {
 
     }
 
+    /**
+     *
+     * @return number of element in queue
+     */
     @Override
     public int size() {
         return size;
@@ -223,7 +261,11 @@ public class CustomPriorityQueue<E> implements queue<E> {
         return -1;
     }
 
-    // remove ith element from queue
+    /**
+     * remove ith element from queue
+     * @param i Element to be removed
+     * @return removed element
+     */
     private E removeAt(int i){
         final Object[] ar=ElementData;
         int n=--size;
@@ -244,6 +286,11 @@ public class CustomPriorityQueue<E> implements queue<E> {
         return null;
     }
 
+    /**
+     * Remove specified element
+     * @param obj
+     * @return true if removed
+     */
     public boolean remove(Object obj){
        int i=indexOf(obj);
        if (i==-1){
@@ -253,6 +300,7 @@ public class CustomPriorityQueue<E> implements queue<E> {
            return true;
        }
     }
+
     @Override
     public E poll() {
         final Object[] ar=ElementData;
@@ -273,6 +321,10 @@ public class CustomPriorityQueue<E> implements queue<E> {
         return result;
     }
 
+    /**
+     *
+     * @return first element in queue
+     */
     @Override
     public E peek() {
         return (E)ElementData[0];
@@ -283,6 +335,11 @@ public class CustomPriorityQueue<E> implements queue<E> {
         return size==0;
     }
 
+    /**
+     * Check if specified element is present in queue
+     * @param e
+     * @return true if present
+     */
     public boolean contains(Object e){
         return indexOf(e)>=0;
     }

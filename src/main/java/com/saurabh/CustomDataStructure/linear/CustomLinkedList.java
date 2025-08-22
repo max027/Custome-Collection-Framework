@@ -14,15 +14,27 @@ import java.util.NoSuchElementException;
  * Search: O(n)
  */
 public class CustomLinkedList<E> implements list<E> {
+    /**
+     * pointer to first node
+     */
     private Node<E> head;
+    /**
+     * pointer to last node
+     */
     private Node<E> tail;
+    /**
+     * number of element in list
+     */
     private int size=0;
 
     public CustomLinkedList(){
 
     }
 
-    // add new element at head.
+    /**
+     * Link specified element as first element in list
+     * @param element element to be link first
+     */
     private void linkFirst(E element){
         final Node<E> f=head;
         final Node<E> newNode=new Node<E>(element,null,f);
@@ -34,7 +46,11 @@ public class CustomLinkedList<E> implements list<E> {
         }
         size++;
     }
-    //add new element at tail
+
+    /**
+     * link specified element as last element in list
+     * @param element element to be linked last
+     */
     private void linkLast(E element){
         final Node<E> l=tail;
         final Node<E> newNode=new Node<>(element,l,null);
@@ -47,7 +63,11 @@ public class CustomLinkedList<E> implements list<E> {
         size++;
     }
 
-    // Link before a particular element
+    /**
+     * Link specified element before non-null element
+     * @param element
+     * @param node
+     */
     void linkBefore(E element,Node<E> node){
         Node<E>prev=node.prev;
         Node<E> newNode=new Node<>(element,prev,node);
@@ -60,7 +80,11 @@ public class CustomLinkedList<E> implements list<E> {
         size++;
     }
 
-    // remove first element
+    /**
+     * unlike non-null first node
+     * @param f
+     * @return
+     */
     private E unlinkFirst(Node<E> f){
         final E items=f.Data;
         final Node<E> next=f.next;
@@ -77,7 +101,11 @@ public class CustomLinkedList<E> implements list<E> {
     }
 
 
-    //remove last element
+    /**
+     * unlink non-null last node
+     * @param l
+     * @return
+     */
     private E unlinkLast(Node<E> l){
         final E items=l.Data;
         final Node<E> perv=l.prev;
@@ -93,7 +121,10 @@ public class CustomLinkedList<E> implements list<E> {
         return items;
     }
 
-    //Remove a particular node in the list
+
+    /**
+     * unlink specified node
+     */
     E unlink(Node<E> node){
         final E items=node.Data;
         final Node<E> next=node.next;

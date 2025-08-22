@@ -20,15 +20,26 @@ public class CustomeDeque<E> implements deque<E> {
 
     static final int DEFAULT_CAPACITY=16;
 
-    //Index of first element in deque
+    /**
+     * Index of first element
+     */
     private int head;
 
-    //Index of last element in deque
+    /**
+     * Index of last element
+     */
     private int tail;
 
+    /**
+     * Safe max size for array
+     */
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
-    //Handel dynamic resizing of circular buffer
+
+    /**
+     * Handel dynamic resizing of buffer
+     * @param givenCap
+     */
     private void grow(int givenCap){
         final int oldCap=elements.length;
 
@@ -54,6 +65,12 @@ public class CustomeDeque<E> implements deque<E> {
         }
     }
 
+    /**
+     * Handel edge case if array size is large
+     * @param givenCap
+     * @param preferedCap
+     * @return capacity
+     */
     private int newCapacity(int givenCap,int preferedCap){
         final int oldCap= elements.length,minCap;
         minCap = oldCap + givenCap;
@@ -70,9 +87,16 @@ public class CustomeDeque<E> implements deque<E> {
         return (oldCap+preferedCap-MAX_ARRAY_SIZE)<0?oldCap+preferedCap:MAX_ARRAY_SIZE;
     }
 
+    /**
+     * construct empty array deque if initial capacity not provided
+     */
     public CustomeDeque(){
         elements=new Object[DEFAULT_CAPACITY+1];
     }
+
+    /**
+     * construct empty array deque with specified initial capacity
+     */
     public CustomeDeque(int cap){
         int needed_cap;
         if (cap<1){
@@ -88,7 +112,13 @@ public class CustomeDeque<E> implements deque<E> {
     }
 
 
-    //Safely move backward
+
+    /**
+     * Circular decrement
+     * @param i
+     * @param m modulus
+     * @return
+     */
     private int dec(int i,int m){
         if (--i<0){
             i=m-1;
@@ -96,7 +126,13 @@ public class CustomeDeque<E> implements deque<E> {
         return i;
     }
 
-    //Safely move ahead
+
+    /**
+     * Circular Increment
+     * @param i
+     * @param m modulus
+     * @return
+     */
     private int inc(int i,int m){
         if (++i>=m){
             i=0;
@@ -104,10 +140,22 @@ public class CustomeDeque<E> implements deque<E> {
         return i;
     }
 
+    /**
+     * Return element at specified index
+     * @param es
+     * @param index
+     * @return element
+     */
     static final <E> E elemantAt(Object[] es,int index){
        return (E) es[index];
     }
 
+
+    /**
+     * Insert specified index in front of queue
+     * @param element element to be inserted
+     * @return true in inserted else false
+     */
     @Override
     public boolean offerFirst(E element) {
         if (element==null){
@@ -125,6 +173,12 @@ public class CustomeDeque<E> implements deque<E> {
         return true;
     }
 
+
+    /**
+     * Insert specified index at end of queue
+     * @param element element to be inserted
+     * @return true in inserted else false
+     */
     @Override
     public boolean offerLast(E element) {
         if (element==null){
@@ -140,6 +194,10 @@ public class CustomeDeque<E> implements deque<E> {
         return true;
     }
 
+    /**
+     * Remove element infront of queue
+     * @return removed element
+     */
     @Override
     public E pollFirst() {
         final Object[] es=elements;
@@ -154,6 +212,10 @@ public class CustomeDeque<E> implements deque<E> {
         return element;
     }
 
+    /**
+     * Remove element at end of queue
+     * @return Removed element
+     */
     @Override
     public E pollLast() {
         final Object[] es=elements;
@@ -166,6 +228,10 @@ public class CustomeDeque<E> implements deque<E> {
         return element;
     }
 
+    /**
+     * Return element in front of queue
+     * @return
+     */
     @Override
     public E peekFirst() {
         E element=elemantAt(elements,head);
@@ -175,6 +241,10 @@ public class CustomeDeque<E> implements deque<E> {
         return element;
     }
 
+    /**
+     * Return element at end of queue
+     * @return
+     */
     @Override
     public E peekLast() {
         final Object[] es=elements;
@@ -187,19 +257,31 @@ public class CustomeDeque<E> implements deque<E> {
 
     // queue methods
 
-    // Add given element at the back
+    /**
+     * Insert element at end of queue
+     * @param element element to be inserted
+     * @return true if inserted else false
+     */
     @Override
     public boolean offer(E element) {
         offerLast(element);
         return true;
     }
 
-    //Remove Element from front
+
+    /**
+     * Remove element in front of queue
+     * @return Removed element
+     */
     @Override
     public E poll() {
         return pollFirst();
     }
 
+    /**
+     * Return First element
+     * @return
+     */
     @Override
     public E peek() {
         return peekFirst();
@@ -209,6 +291,11 @@ public class CustomeDeque<E> implements deque<E> {
         return head==tail;
     }
 
+    /**
+     * Check if specified element is present in queue
+     * @param o element to be searched
+     * @return true if present else false
+     */
     @Override
     public boolean contains(Object o) {
         if (o!=null){
@@ -232,6 +319,10 @@ public class CustomeDeque<E> implements deque<E> {
         return false;
     }
 
+    /**
+     *
+     * @return return number of element in queue
+     */
     public int size(){
         int i=tail-head;
         if (i<0){
