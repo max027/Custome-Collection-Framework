@@ -1,47 +1,90 @@
 package com.saurabh.CustomDataStructure.Maps;
 
+
 public class CustomeHashMap <K,V>{
+    /**
+     * Utility class for hashmap
+     * @param <K> key
+     * @param <V> value
+     */
+   static class MapNode<K,V> {
+       public final K key;
+       public V value;
+       public MapNode<K, V> next;
 
-    static class Map <K,V>{
-        final K key;
-        V value;
-        Map<K,V> next;
+       public MapNode(K key, V value, MapNode<K, V> next) {
+           this.key = key;
+           this.value = value;
+           this.next = next;
+       }
+   }
 
-        public Map(K key, V value,Map<K,V> next) {
-            this.key=key;
-            this.value=value;
-            this.next=next;
-        }
-    }
+    /**
+     * Default capacity if not provided
+     */
     private static final int DEFAULT_CAPACITY=16;
 
     private static final float DEFAULT_LOAD_FACTOR=0.65f;
 
     private int capacity;
+
     private float loadFactor;
+
+    /**
+     * number of elements in map
+     */
     private int size;
 
     /**
      * Bucket array
      */
-    private Map<K,V> table[];
+    private MapNode<K,V> table[];
 
     public CustomeHashMap(){
         this(DEFAULT_CAPACITY,DEFAULT_LOAD_FACTOR);
     }
+
     public CustomeHashMap(int capacity,float loadFactor){
-       this.capacity=capacity;
-       this.loadFactor=loadFactor;
-       this.table =(Map<K,V>[]) new Map[capacity];
+        if (capacity<=0 || loadFactor<=0.0){
+           throw new IllegalArgumentException("capacity and loadfactor cannot be zero or less than zero");
+        }
+            this.capacity = capacity;
+            this.loadFactor = loadFactor;
+            this.table = (MapNode<K, V>[]) new MapNode[capacity];
     }
 
+    public CustomeHashMap(int capacity){
+        this(capacity,DEFAULT_LOAD_FACTOR);
+    }
+
+    public CustomeHashMap(float loadFactor){
+        this(DEFAULT_CAPACITY,loadFactor);
+    }
+
+    /**
+     * compute hash for specified key and convert to valid index
+     * @param key
+     * @return  valid index
+     */
     private int hash(K key){
         return key.hashCode()%capacity;
     }
 
+    /**
+     * Insert specified element with key and value.Collusion is prevented using
+     * channing method
+     * @param key
+     * @param value
+     */
     public void put(K key, V value){
+        if (key==null){
+            throw  new IllegalArgumentException("Key cannot be null");
+        }
+        if (size>capacity * loadFactor){
+            resize();
+        }
         int index=hash(key);
-        Map<K,V>node= table[index];
+        MapNode<K,V>node= table[index];
         while (node!=null){
             if (node.key.equals(key)){
                 node.value=value;
@@ -49,20 +92,21 @@ public class CustomeHashMap <K,V>{
             }
             node=node.next;
         }
-        Map<K,V>newNode=new Map<>(key,value,table[index]);
+        MapNode<K,V>newNode=new MapNode<>(key,value,table[index]);
         table[index]=newNode;
         size++;
-        if (size>capacity * loadFactor){
-            resize();
-        }
     }
+
+    /**
+     * Resize if map is full
+     */
     private void resize(){
         int newCap=capacity*2;
-        Map<K,V>newTable[]=(Map<K, V>[]) new Map[capacity];
+        MapNode<K,V>newTable[]=(MapNode<K, V>[]) new MapNode[capacity];
         for (int i=0;i<capacity;i++){
-            Map<K,V>node= table[i];
+            MapNode<K,V>node= table[i];
             while (node!=null){
-                Map<K,V>next=node.next;
+                MapNode<K,V>next=node.next;
                 int index=hash(node.key);
                 node.next=newTable[index];
                 newTable[index]=node;
@@ -73,9 +117,17 @@ public class CustomeHashMap <K,V>{
         capacity=newCap;
     }
 
+    /**
+     * Retrieve element with specified key
+     * @param key
+     * @return value corresponding to specified key
+     */
     public V get(K key){
+        if (key==null){
+            throw new IllegalArgumentException("Key cannot be null");
+        }
         int index=hash(key);
-        Map<K,V>node=table[index];
+        MapNode<K,V>node=table[index];
         while (node!=null){
             if (node.key.equals(key)){
                 return node.value;
@@ -85,13 +137,17 @@ public class CustomeHashMap <K,V>{
         return null;
     }
 
+    /**
+     * Removes particular element with specified key
+     * @param key
+     */
     public void remove(K key){
         if (key==null){
             throw new IllegalArgumentException("Key cannot be null");
         }
         int index=hash(key);
-        Map<K,V>node=table[index];
-        Map<K,V>prev=null;
+        MapNode<K,V>node=table[index];
+        MapNode<K,V>prev=null;
         while (node!=null){
             if (node.key.equals(key)){
                if (prev==null){
@@ -107,10 +163,18 @@ public class CustomeHashMap <K,V>{
         }
     }
 
+    /**
+     *
+     * @return number of element in map
+     */
     public int size(){
         return size;
     }
 
+    /**
+     *
+     * @return true if map is empty
+     */
     public boolean isEmpty(){
         return size==0;
     }
