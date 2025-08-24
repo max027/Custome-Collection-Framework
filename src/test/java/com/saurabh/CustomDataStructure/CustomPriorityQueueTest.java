@@ -2,6 +2,7 @@ package com.saurabh.CustomDataStructure;
 
 import com.saurabh.CustomDataStructure.linear.CustomPriorityQueue;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,7 @@ public class CustomPriorityQueueTest {
         maxheap = new CustomPriorityQueue<>(Collections.reverseOrder());
     }
 
+    @DisplayName("test shift up after insertion")
     @Test
     void testShiftUpMinheap() {
         minheap.offer(20);
@@ -53,6 +55,7 @@ public class CustomPriorityQueueTest {
 
     }
 
+    @DisplayName("test shift up after insertion at max heap")
     @Test
     void testShiftUpMaxheap() {
         maxheap.offer(5);
@@ -82,6 +85,7 @@ public class CustomPriorityQueueTest {
         assertEquals(Arrays.asList(30, 20, 10, 5), list);
     }
 
+    @DisplayName("test shift up duplicate element")
     @Test
     void testShiftUpDuplicates() {
        minheap.offer(10);
@@ -100,6 +104,7 @@ public class CustomPriorityQueueTest {
         assertEquals(Arrays.asList(2,2,3,3,5,5,10,10),list);
     }
 
+    @DisplayName("test shift down")
     @Nested
     class TestShiftDown{
         @BeforeEach
@@ -111,6 +116,7 @@ public class CustomPriorityQueueTest {
             minheap.offer(5);
         }
 
+        @DisplayName("test shift down in min heap after insertion")
         @Test
         void testShiftDownMinheap(){
             assertEquals(3,(int)minheap.poll());
@@ -123,6 +129,7 @@ public class CustomPriorityQueueTest {
             assertEquals(10, (int)minheap.peek());
         }
 
+        @DisplayName("test shift down in empty queue")
         @Test
         void testShiftDownEmpty(){
             List<Integer>list=new ArrayList<>();
@@ -138,6 +145,7 @@ public class CustomPriorityQueueTest {
 
     }
 
+    @DisplayName("test deletion")
     @Nested
     class TestRemoveAt{
        @BeforeEach
@@ -149,6 +157,7 @@ public class CustomPriorityQueueTest {
            minheap.offer(8);
            minheap.offer(15);
        }
+       @DisplayName("test deletion specified element")
        @Test
         void RemoveSpecificElement(){
            int n=minheap.size();
@@ -167,6 +176,7 @@ public class CustomPriorityQueueTest {
            }
 
        }
+       @DisplayName("test deletion of root element")
        @Test
         void testRemoveRoot(){
            int root= minheap.peek();
@@ -175,6 +185,7 @@ public class CustomPriorityQueueTest {
            assertFalse(minheap.contains(root));
        }
 
+       @DisplayName("test deletion of leaf element")
        @Test
         void testRemoveLeaf(){
            minheap.offer(80);
@@ -184,9 +195,10 @@ public class CustomPriorityQueueTest {
 
        }
     }
-
+    @DisplayName("test Edge cases")
     @Nested
     class TestEdge{
+        @DisplayName("test single element")
        @Test
        void testSingleElement(){
            minheap.offer(12);
@@ -195,6 +207,7 @@ public class CustomPriorityQueueTest {
            assertTrue(minheap.isEmpty());
        }
 
+       @DisplayName("test empty heap")
        @Test
         void testEmptyheap(){
            assertTrue(minheap.isEmpty());
@@ -203,6 +216,7 @@ public class CustomPriorityQueueTest {
            assertNull(minheap.peek());
        }
 
+       @DisplayName("test null pointer exception")
        @Test
         void testNullPointer(){
            assertThrows(NullPointerException.class,()->minheap.offer(null));

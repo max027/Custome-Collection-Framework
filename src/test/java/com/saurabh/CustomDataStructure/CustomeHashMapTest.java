@@ -80,4 +80,36 @@ public class CustomeHashMapTest {
             assertThrows(IllegalArgumentException.class,()->map1.put(null,null));
         }
     }
+
+    @DisplayName("test Contains key and value")
+    @Nested
+    class TestContains{
+        @BeforeEach
+        void initialize(){
+            map1.put(1,"Hello");
+            map1.put(2,"Second");
+            map1.put(3,"Third");
+            map1.put(4,"Fourth");
+        }
+
+        @DisplayName("test Contains key ")
+        @Test
+        void testContainKey(){
+           assertEquals(4, map1.size());
+           assertTrue(map1.containsKey(1));
+           assertFalse(map1.containsKey(5));
+
+           assertThrows(IllegalArgumentException.class,()->map1.containsKey(null));
+        }
+
+        @DisplayName("test Contains Value")
+        @Test
+        void testContainValue(){
+            assertEquals(4, map1.size());
+            assertTrue(map1.containsValue("Hello"));
+            assertFalse(map1.containsValue("Fifth"));
+
+            assertThrows(IllegalArgumentException.class,()->map1.containsValue(null));
+        }
+    }
 }

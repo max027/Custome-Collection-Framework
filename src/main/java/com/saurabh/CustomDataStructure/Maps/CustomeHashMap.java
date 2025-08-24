@@ -1,6 +1,11 @@
 package com.saurabh.CustomDataStructure.Maps;
 
 
+import com.saurabh.CustomDataStructure.Utils.Node;
+
+import java.util.Map;
+import java.util.Objects;
+
 public class CustomeHashMap <K,V>{
     /**
      * Utility class for hashmap
@@ -8,9 +13,9 @@ public class CustomeHashMap <K,V>{
      * @param <V> value
      */
    static class MapNode<K,V> {
-       public final K key;
-       public V value;
-       public MapNode<K, V> next;
+       final K key;
+       V value;
+       MapNode<K, V> next;
 
        public MapNode(K key, V value, MapNode<K, V> next) {
            this.key = key;
@@ -186,5 +191,34 @@ public class CustomeHashMap <K,V>{
         return capacity;
     }
 
+    public boolean containsKey(K key){
+        if (key==null){
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+        int index=hash(key);
+        MapNode<K,V>current=table[index];
+        while (current!=null){
+            if (Objects.equals(current.key,key)){
+                return true;
+            }
+            current=current.next;
+        }
+        return false;
+    }
+
+    public boolean containsValue(V value){
+        if (value==null){
+            throw new IllegalArgumentException("Value cannot be null");
+        }
+        for (MapNode<K,V> node:table){
+            while (node!=null){
+                if (Objects.equals(node.value,value)){
+                    return true;
+                }
+                node=node.next;
+            }
+        }
+        return false;
+    }
 
 }

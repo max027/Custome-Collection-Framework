@@ -28,13 +28,14 @@ public class CustomeLinkedListTest {
         string_list=null;
     }
 
+    @DisplayName("test constructor")
     @Test
     void testConstructor(){
         CustomLinkedList<Integer>arr=new CustomLinkedList<>();
         assertEquals(0,arr.size());
     }
 
-
+    @DisplayName("test insertion at front and end of list")
     @Test
     void testAddFirstLast(){
         string_list.add("First");
@@ -54,6 +55,8 @@ public class CustomeLinkedListTest {
         assertThrows(IndexOutOfBoundsException.class,()->string_list.add(12,"Seventh"));
 
     }
+
+    @DisplayName("test insertion at specified index")
     @Test
     void testAddIndex(){
         string_list.add("First");
@@ -69,12 +72,14 @@ public class CustomeLinkedListTest {
         assertThrows(IndexOutOfBoundsException.class,()->string_list.add(12,"Seventh"));
     }
 
+    @DisplayName("test insertion at invalid index")
     @Test
     void testInvalidIndex(){
         list.add(1);
         assertThrows(IndexOutOfBoundsException.class,()->list.get(12));
     }
 
+    @DisplayName("test deletion in-front and end of list")
     @Test
     void testRemoveFirstLast(){
         list.add(1);
@@ -98,6 +103,7 @@ public class CustomeLinkedListTest {
         assertThrows(NoSuchElementException.class, arr::removeLast);
     }
 
+    @DisplayName("test deletion at specified index ")
     @Test
     void testRemoveIndex(){
         list.add(1);
@@ -114,6 +120,7 @@ public class CustomeLinkedListTest {
         assertThrows(IndexOutOfBoundsException.class,()->list.remove(11));
     }
 
+    @DisplayName("test retrieve first and last element in list")
     @Test
     void testGetFirstLast(){
         string_list.add("First");
@@ -130,6 +137,7 @@ public class CustomeLinkedListTest {
         assertThrows(NoSuchElementException.class,arr::getLast);
     }
 
+    @DisplayName("test retrieve at particular index")
     @Test
     void testGetIndex() {
         string_list.add("First");
@@ -141,6 +149,7 @@ public class CustomeLinkedListTest {
         assertThrows(IndexOutOfBoundsException.class,()->string_list.get(5));
     }
 
+    @DisplayName("test replace specified element")
     @Test
     void testSet(){
         string_list.add("First");
@@ -154,6 +163,7 @@ public class CustomeLinkedListTest {
         assertThrows(IndexOutOfBoundsException.class,()->string_list.get(5));
     }
 
+    @DisplayName("test index of specified element")
     @Test
     void testIndexOf(){
         string_list.add("First");

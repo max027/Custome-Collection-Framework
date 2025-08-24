@@ -45,7 +45,6 @@ This project showcases professional-grade implementations of essential data stru
 
 ### Hash-Based Structures
 - **Hash Map** - Key-value mapping with collision handling
-- **Hash Set** - Unique element collection
 - **Bloom Filter** - Probabilistic membership testing
 
 ## 🚀 Installation

@@ -26,6 +26,7 @@ public class CustomDequeTest {
         string_deque=null;
     }
 
+    @DisplayName("test default constructor")
     @Test
     void testDefaultConstructor(){
         CustomeDeque<String>deque=new CustomeDeque<>();
@@ -33,6 +34,7 @@ public class CustomDequeTest {
         assertEquals(0,deque.size());
     }
 
+    @DisplayName("test parametrized constructor")
     @Test
     void testParameParametrizedConstructor(){
         CustomeDeque<Integer> deque1=new CustomeDeque<>(10);
@@ -40,6 +42,7 @@ public class CustomDequeTest {
         assertEquals(0,deque1.size());
     }
 
+    @DisplayName("test size")
     @Test
     void testSize(){
         deque.offerLast(1);
@@ -62,6 +65,7 @@ public class CustomDequeTest {
         assertEquals(3,deque.size());
     }
 
+    @DisplayName("test peek")
     @Nested
     class TestPeek {
         @BeforeEach
@@ -73,6 +77,7 @@ public class CustomDequeTest {
 
         }
 
+        @DisplayName("test peek First element")
         @Test
         void testPeekFirst(){
             assertEquals(12,(int)deque.peekFirst());
@@ -82,6 +87,8 @@ public class CustomDequeTest {
             CustomeDeque<Integer>ar=new CustomeDeque<>();
             assertThrows(NoSuchElementException.class,()->ar.peekFirst());
         }
+
+        @DisplayName("test peek last element")
         @Test
         void testPeekLast(){
             assertEquals(35,(int)deque.peekLast());
@@ -102,9 +109,12 @@ public class CustomDequeTest {
         }
     }
 
+
+    @DisplayName("test insertion of element")
     @Nested
     class TestInsertion{
 
+        @DisplayName("test insert element in front of queue")
        @Test
        void testOfferFirst(){
            assertTrue(string_deque.offerFirst("A"));
@@ -123,6 +133,7 @@ public class CustomDequeTest {
 
        }
 
+       @DisplayName("test insert element at end of queue")
        @Test
         void testOfferLast(){
            assertTrue(string_deque.offerLast("C"));
@@ -136,7 +147,8 @@ public class CustomDequeTest {
            assertThrows(NullPointerException.class,()->string_deque.offerLast(null));
        }
 
-       @Test
+        @DisplayName("test insert element at end of queue")
+        @Test
         void testOffer(){
            assertTrue(deque.offer(5));
            assertEquals(1,deque.size());
@@ -150,6 +162,7 @@ public class CustomDequeTest {
        }
     }
 
+    @DisplayName("test deletion of element")
     @Nested
     class TestDeletion{
        @BeforeEach
@@ -167,6 +180,8 @@ public class CustomDequeTest {
            string_deque.offer("Fifth");
            string_deque.offer("Sixth");
        }
+
+       @DisplayName("test deletion of element at end of queue")
        @Test
         void testPollLast(){
            assertEquals(4,deque.size());
@@ -185,6 +200,7 @@ public class CustomDequeTest {
 
        }
 
+       @DisplayName("test deletion of element in-front of queue")
        @Test
         void testPollFirst(){
            assertEquals(6,string_deque.size());
@@ -200,6 +216,7 @@ public class CustomDequeTest {
            assertEquals(4,string_deque.size());
        }
 
+       @DisplayName("test deletion of element in-front of queue")
        @Test
         void testPoll(){
            assertEquals(6,string_deque.size());
@@ -214,6 +231,7 @@ public class CustomDequeTest {
            assertEquals(4,string_deque.size());
        }
 
+       @DisplayName("test deletion from empty queue ")
        @Test
         void testPollEmpty(){
            CustomeDeque<Integer>ar=new CustomeDeque<>();
@@ -225,6 +243,7 @@ public class CustomDequeTest {
        }
     }
 
+    @DisplayName("test edge cases")
     @Test
     void testEmptyDeque(){
         CustomeDeque<Integer>deque1=new CustomeDeque<>();

@@ -22,6 +22,7 @@ public class Dynamic_ArrayTest {
         arr2=null;
     }
 
+    @DisplayName("test default constructor")
     @Test
     void testDefault(){
         assertEquals(0,arr.size());
@@ -29,6 +30,7 @@ public class Dynamic_ArrayTest {
         assertEquals(10,arr.capacity());
     }
 
+    @DisplayName("test constructor with specified capacity")
     @Test
     void testConstructorWithValidCapacity() {
         DynamicArrays<String> customArray = new DynamicArrays<>(5);
@@ -36,6 +38,7 @@ public class Dynamic_ArrayTest {
         assertEquals(5, customArray.capacity());
     }
 
+    @DisplayName("test constructor with zero capacity")
     @Test
     void testConstructorWithZeroCapacity() {
         DynamicArrays<String> zeroArray = new DynamicArrays<>(0);
@@ -43,6 +46,7 @@ public class Dynamic_ArrayTest {
         assertEquals(0, zeroArray.capacity());
     }
 
+    @DisplayName("test constructor with negative capacity")
     @Test
     void testConstructorWithNegativeCapacity() {
         IllegalArgumentException exception = assertThrows(
@@ -52,6 +56,7 @@ public class Dynamic_ArrayTest {
         assertEquals("cannot create arrays with capacity -1", exception.getMessage());
     }
 
+    @DisplayName("test insertion and removel of element")
     @Test
     void testAddRemoveElements(){
         arr.add(1);
@@ -71,6 +76,7 @@ public class Dynamic_ArrayTest {
         assertEquals(1, arr2.size());
     }
 
+    @DisplayName("test null case")
     @Test
     void testNull(){
         assertTrue(arr.add(null));
@@ -78,12 +84,14 @@ public class Dynamic_ArrayTest {
         assertNull(arr.get(0));
     }
 
+    @DisplayName("test retrieval at specified index")
     @Test
     void testIndex(){
         arr2.add("Hello");
         assertEquals("Hello",arr2.get(0));
     }
 
+    @DisplayName("test valid index")
     @Test
     void testInvalidIndex(){
         arr2.add("World");
@@ -91,6 +99,7 @@ public class Dynamic_ArrayTest {
         assertThrows(IndexOutOfBoundsException.class,()->arr2.get(100));
     }
 
+    @DisplayName("test array growth")
     @Test
     void testArrayGrowth(){
         DynamicArrays<Integer> arr=new DynamicArrays<>(2);
@@ -101,6 +110,7 @@ public class Dynamic_ArrayTest {
         assertTrue(arr.capacity()>2);
     }
 
+    @DisplayName("test insertion at middle of array")
     @Test
     void testInsertMiddle(){
         DynamicArrays<String>arr=new DynamicArrays<>();
@@ -110,6 +120,8 @@ public class Dynamic_ArrayTest {
         assertEquals(3,arr.size());
         assertEquals("Second",arr.get(1));
     }
+
+    @DisplayName("test Deletion")
     @Test
     void testRemove(){
         DynamicArrays<String>arr=new DynamicArrays<>();
@@ -127,6 +139,7 @@ public class Dynamic_ArrayTest {
         assertEquals("First",arr.get(arr.size()-1));
     }
 
+    @DisplayName("test Deletion of element at specified index")
     @Test
     void testRemoveByIndex(){
         DynamicArrays<String>arr=new DynamicArrays<>();
@@ -139,6 +152,7 @@ public class Dynamic_ArrayTest {
         assertEquals("Third",arr.get(1));
     }
 
+    @DisplayName("test replace of specified element")
     @Test
     void testSet(){
         DynamicArrays<String>arr=new DynamicArrays<>();
