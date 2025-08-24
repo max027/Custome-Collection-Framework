@@ -11,6 +11,5 @@ public class App
         map.put(1,2);
         System.out.println(map.get(1));
 
-
     }
 }

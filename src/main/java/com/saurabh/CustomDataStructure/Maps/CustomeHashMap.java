@@ -179,5 +179,12 @@ public class CustomeHashMap <K,V>{
         return size==0;
     }
 
+    /**
+     * @return how much element does map stores.Increases if full
+     */
+    public int capacity(){
+        return capacity;
+    }
+
 
 }

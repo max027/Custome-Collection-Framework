@@ -15,7 +15,7 @@
             <artifactId>exec-maven-plugin</artifactId>
             <version>3.5.1</version>
                 <configuration>
-                    <mainClass>com.saurabh.CustomDataStructure.App</mainClass>
+                    <mainClass>com.saurabh.CustomDataStructure.Benchmark.Benchmark</mainClass>
                 </configuration>
             </plugin>
         </plugins>

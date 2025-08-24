@@ -1,18 +1,15 @@
 package com.saurabh.CustomDataStructure;
 
-import com.saurabh.CustomDataStructure.linear.CustomLinkedList;
 import com.saurabh.CustomDataStructure.linear.CustomeDeque;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
 import static junit.framework.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import java.util.NoSuchElementException;
 public class CustomDequeTest {
     CustomeDeque<Integer> deque;
     CustomeDeque<String> string_deque;

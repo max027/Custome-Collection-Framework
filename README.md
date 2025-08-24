@@ -203,10 +203,7 @@ The project includes comprehensive unit tests using JUnit 5:
 mvn test
 
 # Run specific test class
-mvn test -Dtest=DynamicArrayTest
-
-# Run performance benchmarks
-mvn test -Dtest=PerformanceBenchmarkTest
+mvn test -Dtest=Dynamic_ArrayTest
 ```
 
 ### Test Coverage
@@ -259,23 +256,23 @@ HashMap.put                        avgt   10   89.1 ±  4.1   ns/op
 Run performance tests to compare with Java's built-in collections:
 
 ```bash
-mvn exec:java -Dexec.mainClass="com.saurabh.CustomDataStructure.benchmarks.PerformanceBenchmark"
+mvn exec:java -Dexec="com.saurabh.CustomDataStructure.Benchmark.Benchmark"
 ```
 
 Sample output:
 ```
 === Performance Comparison ===
 Operation: Add 100,000 elements
-Custom DynamicArray:     125ms
-Java ArrayList:          98ms
-Custom LinkedList:       156ms
-Java LinkedList:         145ms
+Custom DynamicArray:     153ms
+Java ArrayList:          182ms
+Custom LinkedList:       256ms
+Java LinkedList:         147ms
 
 Operation: Random Access (10,000 operations)  
-Custom DynamicArray:     12ms
-Java ArrayList:          8ms
-Custom HashMap:          23ms
-Java HashMap:            18ms
+Custom DynamicArray:     149ms
+Java ArrayList:          117ms
+Custom HashMap:          108ms
+Java HashMap:            140ms
 ```
 
 ### Coding Standards
